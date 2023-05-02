@@ -17,7 +17,7 @@ VALUES ("Eggs", true, true, false, true),
 ("Yoghurt", false, true, false, true);
 
 
-// l'esercizio inizia qui
+-- L'esercizio inizia qui
 
 SELECT * FROM MEALS WHERE PRICE < 15;
 SELECT * FROM INGREDIENT WHERE VEGETARIAN;
