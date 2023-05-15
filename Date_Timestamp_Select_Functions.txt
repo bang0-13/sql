@@ -1,0 +1,47 @@
+CREATE TABLE MEALS ( NAME VARCHAR(255), PRICE DOUBLE,  CALORIES INT);
+INSERT INTO MEALS (NAME, PRICE, CALORIES) VALUES
+("Spaghetti pummarola", 5.50, 600), ("Cacio e pepe", 15.00, 700);
+
+CREATE TABLE INGREDIENT (
+  NAME VARCHAR(255),
+  LACTOSE_FREE BOOLEAN,
+  VEGETARIAN BOOLEAN,
+  VEGAN BOOLEAN,
+  GLUTEN_FREE BOOLEAN
+);
+INSERT INTO INGREDIENT (NAME, LACTOSE_FREE, VEGETARIAN, VEGAN, GLUTEN_FREE)
+VALUES ("Eggs", true, true, false, true), 
+("Bread", true, true, true, false), 
+("Beef patty", true, false, false, true),
+("Lettuce", true, true, true, true),
+("Yoghurt", false, true, false, true);
+
+--L'esercizio inizia qui
+
+-- ESERCIZIO 1:
+-- CONCAT permette di concatenare le stringhe
+SELECT CONCAT(NAME," ", PRICE) AS NAME_AND_PRICE FROM MEALS;
+-- LOWER trasforma la stringa in lower case
+SELECT LOWER(NAME) AS LOWERCASE_NAME FROM MEALS;
+-- UPPER trasforma la stringa in upper case
+SELECT UPPER(NAME) AS UPPERCASE_NAME FROM MEALS;
+-- TRIM elimina gli spazi all'inizio e alla fine di una stringa
+SELECT TRIM(NAME) AS TRIMMED_NAME FROM MEALS;
+-- LENGTH ritorna la lunghezza della stringa in byte
+SELECT LENGTH(NAME) AS NAME_LENGTH FROM MEALS;
+-- SUBSTRING ritorna i caratteri a partire dall'indice preso dal secondo parametro
+-- e prende tanti caratteri quanti specificati dal terzo parametro
+SELECT SUBSTRING(NAME, 0, 3) AS FIRST_3_LETTERS_NAME FROM MEALS;
+-- ROUND arrotonda il numero passato come primo parametro per il secondo parametro
+-- che indica a quale cifra bisogna guardare per arrotondare il numero. Se la cifra è inferiore a 5 arrotonda per difetto, viceversa arrotonda per eccesso
+SELECT ROUND(PRICE, 1) AS ROUNDED_PRICE_FIRST_DECIMAL FROM MEALS;
+-- DATE_ADD aggiunge alla data passata come primo parametro, l'intervallo specificato nel secondo parametro
+SELECT DATE_ADD(NOW(), INTERVAL 10 DAY) AS 10_DAYS_AFTER_TODAY;
+-- DATE_SUB sottrae alla data passata come primo parametro, l'intervallo specificato nel secondo parametro
+SELECT DATE_SUB(NOW(), INTERVAL 10 DAY) AS 10_DAYS_BEFORE_TODAY;
+-- FORMAT formatta il numero in base al secondo parametro, che indica quante cifre dopo la virgola sono concesse
+SELECT FORMAT(PRICE, 1) AS FORMAT_TO_FIRST_DECIMAL FROM MEALS;
+
+--ESERCIZIO 2:
+-- Ho concatenato date_sub e date_add per ottenere il mio compleanno 13/05 a mezzanotte spaccata perchè il codice l'ho scritto alle 14:22 ma il fuso orario dell'editor è due ore indietro
+SELECT DATE_SUB(DATE_ADD(DATE_ADD(NOW(), INTERVAL -2 DAY), INTERVAL 12 MONTH), INTERVAL '12:22' HOUR_MINUTE);
