@@ -1,0 +1,30 @@
+CREATE TABLE MEALS ( NAME VARCHAR(255), PRICE DOUBLE,  CALORIES INT, ORDERTIME TIMESTAMP);
+INSERT INTO MEALS (NAME, PRICE, CALORIES) VALUES
+("Spaghetti pummarola", 5.50, 600), ("Cacio e pepe", 15.00, 700), ("Paccheri e scampi", 20.00, 550), ("Rigatoni con cinghiale", 18.00, 700);
+
+CREATE TABLE INGREDIENT (
+  NAME VARCHAR(255),
+  LACTOSE_FREE BOOLEAN,
+  VEGETARIAN BOOLEAN,
+  VEGAN BOOLEAN,
+  GLUTEN_FREE BOOLEAN
+);
+INSERT INTO INGREDIENT (NAME, LACTOSE_FREE, VEGETARIAN, VEGAN, GLUTEN_FREE)
+VALUES ("Eggs", true, true, false, true), 
+("Bread", true, true, true, false), 
+("Beef patty", true, false, false, true),
+("Lettuce", true, true, true, true),
+("Yoghurt", false, true, false, true);
+
+-- L'esercizio inizia qui
+
+-- return the number of records in meals
+SELECT COUNT(*) FROM MEALS;
+-- return the sum of prices of the meals that have a price higher than 15
+SELECT SUM(PRICE) FROM MEALS WHERE PRICE > 15;
+-- return the number of records that have calories higher than 500 and then group them by calories
+SELECT COUNT(*), CALORIES FROM MEALS WHERE CALORIES > 500 GROUP BY CALORIES;
+-- return the sum of the prices from meals where name contains at least an s
+SELECT SUM(PRICE) FROM MEALS WHERE LOWER(NAME) LIKE '%s%';
+-- return the number of records that have an order time before the given timestamp
+SELECT COUNT(*) FROM MEALS WHERE ORDERTIME < "2023-05-15 18:00:00";
