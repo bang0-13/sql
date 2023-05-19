@@ -1,0 +1,7 @@
+-- Add constraints to every column of the INGREDIENTS table, you should use NOT NULL for some columns and unique for other(s)
+alter table INGREDIENT modify NAME VARCHAR(255) unique;
+alter table INGREDIENT modify NAME VARCHAR(255) not Null;
+alter table INGREDIENT modify LACTOSE_FREE BOOLEAN not NULL;
+alter table INGREDIENT modify VEGAN BOOLEAN not NULL;
+alter table INGREDIENT modify VEGETARIAN BOOLEAN not NULL;
+alter table INGREDIENT modify GLUTEN_FREE BOOLEAN not NULL;
