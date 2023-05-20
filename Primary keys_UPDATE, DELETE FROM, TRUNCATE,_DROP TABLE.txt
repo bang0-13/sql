@@ -1,0 +1,68 @@
+-- esercizio 1
+CREATE TABLE `customers` (
+  `customer_id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `surname` varchar(100) NOT NULL,
+  PRIMARY KEY (`customer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- esercizio 2
+insert into customers (name, surname) values ("Ciccio", "Pasticcio"), ("Mario", "Rossi");
+
+-- esercizio 3
+UPDATE customers
+SET name = "Gianni", surname = "Spinotti"
+WHERE name = "Ciccio"
+
+-- esercizio 4
+delete from CUSTOMERS where CUSTOMER_ID = 1;
+
+-- esercizio 5
+truncate table customers;
+
+-- esercizio 6
+Look at the tables below and write which column(s) you think would make a good primary key.
+
+Question
+
+CREATE TABLE Customers (
+ customer_id INT NOT NULL AUTO_INCREMENT,
+ first_name VARCHAR(255) NOT NULL,
+ last_name VARCHAR(255) NOT NULL,
+ email VARCHAR(255) NOT NULL,
+ PRIMARY KEY (customer_id)
+);
+
+customer_id would make a good primary key
+
+-- esercizio 7 Question
+
+CREATE TABLE Products (
+ product_name VARCHAR(255) NOT NULL,
+ product_description VARCHAR(255) NOT NULL,
+ product_price DECIMAL(10, 2) NOT NULL,
+ product_quantity INT NOT NULL
+);
+
+no columns would make a good primary key
+
+-- esercizio 8 Question
+CREATE TABLE Orders (
+ order_id INT NOT NULL AUTO_INCREMENT,
+ customer_id INT NOT NULL,
+ expected_arrival_time DATE
+);
+
+order_id would make a good primary key
+
+9 - Question
+
+CREATE TABLE Product_Orders (
+ order_id INT NOT NULL AUTO_INCREMENT,
+ product_name VARCHAR(255) NOT NULL,
+ total_revenue DOUBLE
+);
+
+no columns would make a good primary key
+
+
