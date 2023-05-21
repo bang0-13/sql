@@ -1,0 +1,39 @@
+-- Using the INGREDIENT and MEAL tables, write a query to return the name of all meals that contain garlic.
+select * from MEAL inner join ingredient ON meal.meal_id = ingredient.meal_id where ingredient.name  = "Garlic";
+-- Using the INGREDIENT and MEAL tables, write a query to return the number of meals with vegetarian ingredients.
+select count(distinct(MEAL.name)) as number_of_vegetarian_meals from MEAL inner join ingredient ON meal.meal_id = ingredient.meal_id where vegetarian = true;
+-- Using the INGREDIENT and MEAL tables, write a query to return the names of meals that have at least 1 gluten free ingredient and at least 1 vegan ingredient.
+select distinct(meal.name)  from MEAL inner join ingredient ON meal.meal_id = ingredient.meal_id where vegan = true and gluten_free = true;
+-- Using the INGREDIENT and MEAL tables, write a query to return the average number of ingredients per meal.
+select count(ingredient.name) / count(distinct(meal.name)) as average_number_of_ingredients from ingredient inner join meal ON meal.meal_id = ingredient.meal_id;
+-- Using the INGREDIENT and MEAL tables, write a query to return the names of meals that have more than 3 ingredients.
+select meal.name from ingredient inner join meal ON meal.meal_id = ingredient.meal_id group by meal.name having count(ingredient.name) > 3;
+
+-- Using the following table definitions, write an inner join for the two tables
+CREATE TABLE CUSTOMER (
+    CUSTOMER_ID INT,
+    NAME VARCHAR(255),
+    ADDRESS VARCHAR(255)
+);
+CREATE TABLE ORDER (
+    ORDER_ID INT,
+    CUSTOMER_ID INT,
+    ORDER_DATE DATE,
+    TOTAL_COST DECIMAL(10,2)
+);
+
+select * from customer inner join orders on customer.CUSTOMER_ID = orders.CUSTOMER_ID where TOTAL_COST > 5.00;
+
+-- Using the following table definitions, write an inner join for the two tables
+CREATE TABLE PRODUCT (
+    PRODUCT_ID INT,
+    NAME VARCHAR(255),
+    PRICE DECIMAL(10,2)
+);
+CREATE TABLE INVENTORY (
+    PRODUCT_ID INT,
+    STORE_ID INT,
+    QUANTITY INT
+);
+
+select * from product inner join inventory on product.PRODUCT_ID = inventory.PRODUCT_ID where inventory.QUANTITY > 3
