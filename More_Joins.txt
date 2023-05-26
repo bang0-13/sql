@@ -1,0 +1,8 @@
+select * from meal left join ingredient on meal.meal_id = ingredient.meal_id;
+select * from meal right join ingredient on meal.meal_id = ingredient.meal_id;
+select * from meal left join ingredient on meal.meal_id = ingredient.meal_id where ingredient.meal_id = null ;
+select * from meal right join ingredient on meal.meal_id = ingredient.meal_id where meal.meal_id  = null ;
+select * from meal left join ingredient on meal.meal_id = ingredient.meal_id 
+union select * from MEAL right join ingredient  on meal.meal_id = ingredient.meal_id ;
+select * from meal left join ingredient on meal.meal_id = ingredient.meal_id 
+union select * from MEAL right join ingredient  on meal.meal_id = ingredient.meal_id where (meal.meal_id is null or ingredient.meal_id is null);
